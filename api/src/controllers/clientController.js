@@ -36,8 +36,10 @@ server.put('/cliente/:id', async (req, resp) => {
         let add = req.body
 
         const resposta = await Update(addId, add)
-        if (resposta != 1)
-            throw new Error('O contato não pode ser alterado')
+
+        let get = List()
+        if (resposta.ID_CPF == get.ID_CPF)
+            throw new Error('sao ingual')
         else
             resp.status(204).send()
     } catch (err) {
