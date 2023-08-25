@@ -20,6 +20,11 @@ server.post('/cliente', async (req, resp) => {
         const add = req.body
         let data = await AddClient(add);
 
+        let get = List()
+        if (data.ID_CPF == get.ID_CPF)
+            throw new Error('sao ingual')
+        else
+            resp.status(204).send()
         resp.send(data)
     } catch (err) {
         resp.status(500).send({
@@ -37,11 +42,7 @@ server.put('/cliente/:id', async (req, resp) => {
 
         const resposta = await Update(addId, add)
 
-        let get = List()
-        if (resposta.ID_CPF == get.ID_CPF)
-            throw new Error('sao ingual')
-        else
-            resp.status(204).send()
+       
     } catch (err) {
         resp.status(400).send({
             erro: err.message
